@@ -1,5 +1,6 @@
 # youdea
-Youdea files
+Youdea folder 
 
+Youdea home 
 
-First commit
+Youdea 
