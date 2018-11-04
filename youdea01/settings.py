@@ -28,6 +28,7 @@ DEBUG = os.environ.get('DEBUG')
 ALLOWED_HOSTS = [ 
         '0.0.0.0',
         'localhost',
+        'www.youdea.co.uk',
         'youdea.herokuapp.com'
         ]
 
