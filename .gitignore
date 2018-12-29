@@ -1,4 +1,8 @@
 *.pyc
-db.sqlite3
-
+*.pyo
+*.db
+.DS_Store
+.coverage
+local_settings.py
+/static
 .env
