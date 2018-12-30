@@ -11,9 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 from mezzanine.utils.conf import real_project_name
-from dj_static import Cling
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE",
                       "%s.settings" % real_project_name("name"))
 
-application = Cling(get_wsgi_application())
+application = get_wsgi_application()

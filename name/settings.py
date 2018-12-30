@@ -90,14 +90,9 @@ USE_MODELTRANSLATION = False
 # MAIN DJANGO SETTINGS #
 ########################
 
-SECRET_KEY = os.environ['SECRET_KEY']
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [
-         '0.0.0.0',
-         'localhost',
-        'youdea.herokuapp.com'
-         ]
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -148,17 +143,17 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.",
         # DB name or path to database file if using sqlite3.
-        "NAME": os.environ['DBNAME'],
+        "NAME": "",
         # Not used with sqlite3.
-        "USER": os.environ['DBUSER'],
+        "USER": "",
         # Not used with sqlite3.
-        "PASSWORD": os.environ['DBPASS'],
+        "PASSWORD": "",
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": os.environ['DBHOST'],
+        "HOST": "",
         # Set to empty string for default. Not used with sqlite3.
-        "PORT": os.environ['DBPORT'],
+        "PORT": "",
     }
 }
 
@@ -257,7 +252,6 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     "mezzanine.twitter",
     # "mezzanine.accounts",
-    'storages',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -328,15 +322,6 @@ if os.path.exists(f):
     module.__file__ = f
     sys.modules[module_name] = module
     exec(open(f, "rb").read())
-
-# Storage on S3 settings are stored as os.environs to keep settings.py clean
-if not DEBUG:
-   AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-   AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-   AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-   STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-   S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-   STATIC_URL = S3_URL
 
 
 ####################
