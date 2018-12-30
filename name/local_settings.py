@@ -25,7 +25,13 @@ DATABASES = {
 }
 
 # Allowed development hosts
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1"]
+ALLOWED_HOSTS = [
+        '0.0.0.0',
+        '127.0.0.1',
+        'localhost',
+        'www.youdea.co.uk',
+        'youdea.herokuapp.com'
+        ]
 
 ###################
 # DEPLOY SETTINGS #
