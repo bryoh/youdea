@@ -1,8 +1,12 @@
 beautifulsoup4==4.6.0
+bleach==2.1.4
 certifi==2019.3.9
 chardet==3.0.4
 Django==2.2.1
+django-colorful==1.3
+django-el-pagination==3.2.4
 django-modelcluster==4.4
+django-social-share==1.3.2
 django-taggit==0.24.0
 django-treebeard==4.3
 djangorestframework==3.9.4
@@ -10,8 +14,10 @@ draftjs-exporter==2.1.6
 gunicorn==19.9.0
 html5lib==1.0.1
 idna==2.8
+Markdown==2.6.11
 Pillow==5.4.1
 psycopg2-binary==2.8.2
+puput==1.0.4
 pytz==2019.1
 requests==2.22.0
 six==1.12.0
