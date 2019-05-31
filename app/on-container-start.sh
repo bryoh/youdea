@@ -29,8 +29,7 @@ python manage.py migrate
 #python manage.py runserver
 
 echo "==============================================================="
-gunicorn --reload app.wsgi:application -b 0.0.0.0:8000
-
+gunicorn --reload app.wsgi 
 #useradd wagtail
 #chown -R wagtail /code
 
