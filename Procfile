@@ -1,2 +1,2 @@
-web: gunicorn youdea.wsgi
+web: sh app/on-container-start.sh
 
