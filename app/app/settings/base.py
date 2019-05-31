@@ -92,8 +92,8 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     "default": {
         'CONN_MAX_AGE': 0,
-        "ENGINE": os.environ.get("DBENGINE", "django.db.backends.postgresql"),
-        "NAME": os.environ.get("DBNAME", os.path.join(BASE_DIR, "db.postgresql")),
+        "ENGINE": os.environ.get("DBENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DBNAME", os.path.join(BASE_DIR, "db.sqlite3")),
         "USER": os.environ.get("DBUSER", "user"),
         "PASSWORD": os.environ.get("DBPASS", "password"),
         "HOST": os.environ.get("DBHOST", "localhost"),
