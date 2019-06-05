@@ -14,6 +14,7 @@ djangorestframework==3.9.4
 draftjs-exporter==2.1.6
 future==0.17.1
 geocoder==1.38.1
+gunicorn==19.9.0
 html5lib==1.0.1
 icalendar==4.0.3
 idna==2.8
