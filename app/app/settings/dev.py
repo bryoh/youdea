@@ -4,15 +4,15 @@ from .base import *
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ih@00a+4ymm^h_#u)w4r_9s@fo=7c%o7c-&$2s!pmif+4ho$dk'
+SECRET_KEY = 'ufbtkva$l)g)apuftzq#9(gcc-5wiy98x&_@&^7kaf_8%lzm1$'
 
-# SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+WAGTAIL_CACHE = False
 
 try:
-    from .local import *
+    from .local_settings import *
 except ImportError:
     pass

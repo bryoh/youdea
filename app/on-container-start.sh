@@ -10,29 +10,20 @@
 
     #echo "PostgreSQL started"
 #fi
-# Create migrations based on django models
-
-echo "==============================================================="
+echo "============================================================== cd into app"
 cd app
+ls -alt
+echo "============================================================== Create migrations based on django models"
 python manage.py makemigrations
 
-echo "==================Migrate created migrations to database============================================="
-# Migrate created migrations to database
+echo "============================================================== Migrate created migrations to database"
 python manage.py migrate
 
-# Start gunicorn server at port 8000 and keep an eye for app code changes
-# If changes occur, kill worker and start a new one
-
-#python manage.py flush --no-input
-#python manage.py migrate
-echo "==================Collect Static ============================================="
+echo "============================================================== Collect Static "
 python manage.py collectstatic --no-input --clear
 
-#python manage.py runserver
 
-echo "==============================================================="
-gunicorn --reload app.wsgi 
-#useradd wagtail
-#chown -R wagtail /code
+echo "============================================================== Start the server"
+python manage.py runserver
 
 exec "$@"
