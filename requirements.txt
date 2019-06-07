@@ -6,6 +6,7 @@ chardet==3.0.4
 Click==7.0
 coderedcms==0.15.0
 decorator==4.4.0
+dj-database-url==0.5.0
 Django==2.2.2
 django-bootstrap4==0.0.8
 django-eventtools==0.9.11
