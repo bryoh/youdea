@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # other
     'storages'
 ]
 
@@ -151,10 +150,10 @@ STATICFILES_DIRS = [
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -167,26 +166,8 @@ WAGTAIL_SITE_NAME = "Youdea"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://www.youdea.co.uk'
-
-
-# Bootstrap
-
-BOOTSTRAP4 = {
-    # set to blank since coderedcms already loads jquery and bootstrap
-    'jquery_url': '',
-    'base_url': '',
-    # remove green highlight on inputs
-    'success_css_class': ''
-}
-
-
-# Tags
-
-TAGGIT_CASE_INSENSITIVE = True
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
-
 # Add your site's domain name(s) here.
 ALLOWED_HOSTS = [
         '0.0.0.0',
@@ -199,7 +180,6 @@ import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
-
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -209,75 +189,6 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = 'static'
 AWS_S3_FILE_OVERWRITE = False
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/static/'),
-]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# To send email from the server, we recommend django_sendmail_backend
-# Or specify your own email backend such as an SMTP server.
-# https://docs.djangoproject.com/en/2.2/ref/settings/#email-backend
-EMAIL_BACKEND = 'django_sendmail_backend.backends.EmailBackend'
-
-# Default email address used to send messages from the website.
-DEFAULT_FROM_EMAIL = 'Youdea <info@youdea.co.uk>'
-
-# A list of people who get error notifications.
-ADMINS = [
-    ('Administrator', 'admin@youdea.co.uk'),
-]
-
-# A list in the same format as ADMINS that specifies who should get broken link
-# (404) notifications when BrokenLinkEmailsMiddleware is enabled.
-MANAGERS = ADMINS
-
-# Email address used to send error messages to ADMINS.
-SERVER_EMAIL = DEFAULT_FROM_EMAIL
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'HOST': 'localhost',
-#        'NAME': 'app',
-#        'USER': 'app',
-#        'PASSWORD': '',
-#        # If using SSL to connect to a cloud mysql database, spedify the CA as so.
-#        'OPTIONS': { 'ssl': { 'ca': '/path/to/certificate-authority.pem' } },
-#    }
-#}
-
-# Use template caching to speed up wagtail admin and front-end.
-# Requires reloading web server to pick up template changes.
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'wagtail.contrib.settings.context_processors.settings',
-            ],
-            'loaders': [
-                ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                ]),
-            ],
-        },
-    },
-]
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'cache'),
-        'KEY_PREFIX': 'coderedcms',
-        'TIMEOUT': 14400, # in seconds
-    }
-}
-
