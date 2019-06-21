@@ -1,30 +1,29 @@
 from django.conf import settings
-from django.urls import include, path, re_path
+from django.conf.urls import include, url
 from django.contrib import admin
+
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from coderedcms import admin_urls as coderedadmin_urls
-from coderedcms import search_urls as coderedsearch_urls
-from coderedcms import urls as codered_urls
+
+from search import views as search_views
 
 urlpatterns = [
-    # Admin
-    path('django-admin/', admin.site.urls),
-    path('admin/', include(coderedadmin_urls)),
+    url(r'^django-admin/', admin.site.urls),
 
-    # Documents
-    path('docs/', include(wagtaildocs_urls)),
+    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
 
-    # Search
-    path('search/', include(coderedsearch_urls)),
+    url(r'^search/$', search_views.search, name='search'),
 
     # For anything not caught by a more specific rule above, hand over to
-    # the page serving mechanism. This should be the last pattern in
+    # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
-    re_path(r'', include(codered_urls)),
+    url(r'', include(wagtail_urls)),
 
-    # Alternatively, if you want CMS pages to be served from a subpath
+    # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
-    #    re_path(r'^pages/', include(codered_urls)),
+    #    url(r'^pages/', include(wagtail_urls)),
 ]
 
 

@@ -24,19 +24,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    # This project
-    'website',
+    'home',
+    'search',
 
-    # CodeRed CMS
-    'coderedcms',
-    'bootstrap4',
-    'modelcluster',
-    'taggit',
-    'wagtailfontawesome',
-    'wagtailcache',
-    'wagtailimportexport',
-
-    # Wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -46,49 +36,33 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.search',
-    'wagtail.core',
-    'wagtail.contrib.settings',
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.table_block',
     'wagtail.admin',
+    'wagtail.core',
 
-    # Django
+    'modelcluster',
+    'taggit',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sitemaps',
-
     # other
     'storages'
 ]
 
 MIDDLEWARE = [
-    # Save pages to cache. Must be FIRST.
-    'wagtailcache.cache.UpdateCacheMiddleware',
-
-    # Common functionality
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.common.CommonMiddleware',
-
-    # Security
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    # Error reporting. Uncomment this to recieve emails when a 404 is triggered.
-    #'django.middleware.common.BrokenLinkEmailsMiddleware',
-
-    # CMS functionality
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-
-    # Fetch from cache. Must be LAST.
-    'wagtailcache.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -96,6 +70,9 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,7 +80,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
@@ -151,9 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/New_York'
+TIME_ZONE = 'UTC'
 
-USE_I18N = False
+USE_I18N = True
 
 USE_L10N = True
 
@@ -168,24 +144,25 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'static'),
+]
+
+# ManifestStaticFilesStorage is recommended in production, to prevent outdated
+# Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
+# See https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-
-# Login
-
-LOGIN_URL = 'wagtailadmin_login'
-LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = 'Youdea'
-
-WAGTAIL_ENABLE_UPDATE_CHECK = False
+WAGTAIL_SITE_NAME = "Youdea"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
@@ -208,7 +185,7 @@ BOOTSTRAP4 = {
 TAGGIT_CASE_INSENSITIVE = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'ufbtkva$l)g)apuftzq#9(gcc-5wiy98x&_@&^7kaf_8%lzm1$')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
 
 # Add your site's domain name(s) here.
 ALLOWED_HOSTS = [
