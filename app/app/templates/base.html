@@ -19,6 +19,15 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        {# Load the tag library #}
+        {% load bootstrap4 %}
+
+        {# Load CSS and JavaScript #}
+        {% bootstrap_css %}
+        <link rel="stylesheet" 
+              href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+              integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" 
+              crossorigin="anonymous">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -36,5 +45,6 @@
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+        {% bootstrap_javascript jquery='full' %}
     </body>
 </html>
