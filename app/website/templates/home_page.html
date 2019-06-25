@@ -1,0 +1,64 @@
+{% load static coderedcms_tags i18n wagtailcore_tags wagtailimages_tags wagtailsettings_tags wagtailuserbar %}
+{% get_settings %}
+
+<!doctype html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'>
+    </head>
+
+    <body class="coderedcms-{{page.content_type.model}} {% if page.get_parent %}parent-page-{{page.get_parent.id}}{% endif %} {% block body_class %}{% endblock %}" id="page-{{page.id}}">
+
+        {% include "coderedcms/includes/codered_banner.html" %}
+
+        {% wagtailuserbar %}
+
+        {% block ada_skip %}
+            {% if settings.coderedcms.ADASettings.skip_navigation %}
+                <a href='#content' title='Skip Navigation'>Skip Navigation</a>
+            {% endif %}
+        {% endblock %}
+
+        {% block navbar %}{% endblock %}
+
+        <div id="content">
+            {% block content %}
+
+                {% block content_pre_body %}{% endblock %}
+
+                {% block content_body %}
+                {% include_block page.body with settings=settings %}
+                {% endblock %}
+
+                {% block content_post_body %}{% endblock %}
+
+                {% block index_filters %}
+                {% if page.index_show_subpages and page.index_classifiers.exists %}
+                    {% include "coderedcms/includes/classifier_dropdowns.html" with formclass="form-inline" %}
+                {% endif %}
+                {% endblock %}
+
+                {% block index_content %}
+                {% if page.index_show_subpages %}
+                    <ul>
+                    {% for child in index_paginated %}
+                        <li><a href="{% pageurl child %}">{{child.title}}</a></li>
+                    {% endfor %}
+                    </ul>
+                    {% include "coderedcms/includes/pagination.html" with items=index_paginated %}
+                {% endif %}
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>
+        <script id="rendered-js">
+            $("#myCarousel").carousel({ interval: false  }); 
+        </script>
+    </body>
+</html>
+

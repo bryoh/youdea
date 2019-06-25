@@ -12,6 +12,15 @@ from coderedcms.models import (
 )
 
 
+class HomePage(CoderedArticlePage):
+    """
+    Home Page Model
+
+    """
+    class Meta:
+        verbose_name = 'Home Page'
+    template = 'home_page.html'
+
 class ArticlePage(CoderedArticlePage):
     """
     Article, suitable for news or blog content.
