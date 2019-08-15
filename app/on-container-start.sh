@@ -24,6 +24,7 @@ python manage.py collectstatic --no-input --clear
 
 
 echo "============================================================== Start the server"
-gunicorn --reload app.wsgi 
+#gunicorn --reload app.wsgi 
+python manage.py runserver
 
 exec "$@"
