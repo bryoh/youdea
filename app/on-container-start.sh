@@ -14,13 +14,13 @@ echo "============================================================== cd into app
 cd app
 ls -alt
 echo "============================================================== Create migrations based on django models"
-#python manage.py makemigrations
+python manage.py makemigrations
 
 echo "============================================================== Migrate created migrations to database"
-#python manage.py migrate
+python manage.py migrate
 
 echo "============================================================== Collect Static "
-#python manage.py collectstatic --no-input --clear
+python manage.py collectstatic --no-input --clear
 
 
 echo "============================================================== Start the server"
