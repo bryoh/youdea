@@ -26,6 +26,13 @@ urlpatterns = [
     #    url(r'^pages/', include(wagtail_urls)),
 ]
 
+from django.urls import path
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
 
 if settings.DEBUG:
     from django.conf.urls.static import static
