@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'www.youdea.co.uk', 'youde
 # Application definition
 
 INSTALLED_APPS = [
-    'blog',
+    # 'blog',
     # Django
     'django.contrib.admin',
     'django.contrib.auth',
