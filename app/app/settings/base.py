@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
 INSTALLED_APPS = [
     'home',
     'search',
+    'flex',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
