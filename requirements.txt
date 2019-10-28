@@ -6,6 +6,7 @@ chardet==3.0.4
 dj-database-url==0.5.0
 Django==2.2.4
 django-bootstrap4==1.0.1
+django-debug-toolbar==2.0
 django-modelcluster==4.4
 django-storages==1.7.1
 django-taggit==0.24.0
@@ -32,5 +33,6 @@ wagtail-blocks==0.6.8
 wagtail-cache==0.5.2
 wagtail-import-export==0.2
 wagtailfontawesome==1.1.4
+wagtailmedia==0.3.1
 webencodings==0.5.1
 Willow==1.1
