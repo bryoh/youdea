@@ -12,6 +12,9 @@
             {% if self.banner_cta %}
             <a class="btn btn-primary btn-lg" href="#" role="button">@todo</a>
             {% endif %}
+            <audio controls>
+                <source src="{{ self.featured_podcast.file.url }}" type="audio/mpeg">
+            </audio>
         </div>
     </div>
 {% endblock %}
