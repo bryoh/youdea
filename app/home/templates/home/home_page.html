@@ -3,35 +3,37 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="container-fluid">
-        <h1 class="display-4">{{ self.banner_title }}</h1>
-        <div class="lead">{{ self.banner_subtitle|richtext }}</div>
-        <p class="pull-right">{{ self.banner_author|richtext }}</p>
-        <hr class="my-4">
-        <div class="container">
-                <div class="column add-bottom">
-                    <div id="mainwrap">
-                        <div id="nowPlay">
-                            <span id="npAction">Paused...</span><span id="npTitle"></span>
-                        </div>
-                        <div id="audiowrap">
-                            <div id="audio0">
-                               <audio id="audio1" preload controls>
-                                   Your browser does not support HTML5 Audio! 😢
-                               </audio>
+<div class='container'>
+    <div class="jumbotron">
+            <h1 class="display-4">{{ self.banner_title }}</h1>
+            <div class="lead">{{ self.banner_subtitle|richtext }}</div>
+            <p class="pull-right">{{ self.banner_author|richtext }}</p>
+            <hr class="my-4">
+            <div class="container">
+                    <div class="column add-bottom">
+                        <div id="mainwrap">
+                            <div id="nowPlay">
+                                <span id="npAction">Paused...</span><span id="npTitle"></span>
                             </div>
-                            <div id="tracks">
-                                <a id="btnPrev" class='fas fa-fast-backward'></a>
-                                <a id="btnNext" class='fas fa-fast-forward'></a>
+                            <div id="audiowrap">
+                                <div id="audio0">
+                                   <audio id="audio1" preload controls>
+                                       Your browser does not support HTML5 Audio! 😢
+                                   </audio>
+                                </div>
+                                <div id="tracks">
+                                    <a id="btnPrev" class='fas fa-fast-backward'></a>
+                                    <a id="btnNext" class='fas fa-fast-forward'></a>
+                                </div>
                             </div>
-                        </div>
-                        <div id="plwrap">
-                            <ul id="plList"></ul>
+                            <div id="plwrap">
+                                <ul id="plList"></ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-        </div>
+            </div>
+    </div>
+    {{ self.content  }}
 </div>
-{{ self.content  }}
 {% endblock %}
 
