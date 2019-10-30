@@ -11,9 +11,9 @@ jQuery(function ($) {
         var index = 0,
             playing = false,
             tracks = [
-        {% for card in self.cards %}
-                { "name": "{{ card.title }}", "track":"{{ card.trackno }}", "file": "{{ card.file.url }}", "duration": "{{ card.track.duration }}" },
-        {% endfor %}
+                {% for card in self.cards %}
+                { "name": "{{ card.title }}", "track":{{ card.trackno }}, "file": "{{ card.track.file.url }}", "duration": {{ card.track.duration }} },
+                {% endfor %}
             ],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
