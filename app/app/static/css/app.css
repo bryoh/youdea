@@ -33,17 +33,6 @@ text-align:right;
 width:70%;
 }
 
-#plList li {
-cursor:pointer;
-display:block;
-margin:0;
-padding:21px 0;
-}
-
-#plList li:hover {
-background-color:rgba(0,0,0,.1);
-}
-
 .plItem {
 position:relative;
 }

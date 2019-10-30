@@ -32,10 +32,11 @@ class CardBlock(blocks.StructBlock):
     cards = blocks.ListBlock(
         blocks.StructBlock(
             [
-                ("trackno", blocks.CharBlock(required=True, help_text="Track Number")),
+                ("trackno", blocks.FloatBlock(required=True, help_text="Track Number")),
                 ('title', blocks.CharBlock(required=True, max_length=40, help_text='Episode Title')),
                 ("track", AbstractMediaChooserBlock(required=True, help_text="Upload/Choose audio file")),
-                ("image", ImageChooserBlock(required=False, help_text='Upload/Choose Image')),
+                ("trackdate", blocks.DateBlock(required=True, help_text="Upload date")),
+                ("shownotespage", blocks.PageChooserBlock(required=False, help_text='Choose Shownotespage')),
             ]
         )
     )
