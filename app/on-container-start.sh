@@ -20,7 +20,7 @@ echo "============================================================== Migrate cre
 python manage.py migrate
 
 echo "============================================================== Collect Static "
-python manage.py collectstatic --no-input --clear
+#python manage.py collectstatic --no-input --clear
 
 
 echo "============================================================== Start the server"

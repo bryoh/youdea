@@ -3,18 +3,35 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="container">
-          {% image self.banner_image width-3560 as img %}
-        <div class="jumbotron" style="background-image: url('{{ img.url }}'); min-height: 400px; height: 40vh; background-size: cover; background-position: center top; display: flex; flex-direction: column; justify-content: center;">
-            <h1 class="display-4">{{ self.banner_title }}</h1>
-            <div class="lead">{{ self.banner_subtitle|richtext }}</div>
-            <p class="pull-right">{{ self.banner_author|richtext }}</p>
-            {% if self.banner_cta %}
-            <a class="btn btn-primary btn-lg" href="#" role="button">@todo</a>
-            {% endif %}
-            <audio controls>
-                <source src="{{ self.featured_podcast.file.url }}" type="audio/mpeg">
-            </audio>
+<div class="container-fluid">
+        <h1 class="display-4">{{ self.banner_title }}</h1>
+        <div class="lead">{{ self.banner_subtitle|richtext }}</div>
+        <p class="pull-right">{{ self.banner_author|richtext }}</p>
+        <hr class="my-4">
+        <div class="container">
+                <div class="column add-bottom">
+                    <div id="mainwrap">
+                        <div id="nowPlay">
+                            <span id="npAction">Paused...</span><span id="npTitle"></span>
+                        </div>
+                        <div id="audiowrap">
+                            <div id="audio0">
+                               <audio id="audio1" preload controls>
+                                   Your browser does not support HTML5 Audio! 😢
+                               </audio>
+                            </div>
+                            <div id="tracks">
+                                <a id="btnPrev" class='fas fa-fast-backward'></a>
+                                <a id="btnNext" class='fas fa-fast-forward'></a>
+                            </div>
+                        </div>
+                        <div id="plwrap">
+                            <ul id="plList"></ul>
+                        </div>
+                    </div>
+                </div>
         </div>
-    </div>
+</div>
+{{ self.content  }}
 {% endblock %}
+
