@@ -12,20 +12,20 @@ jQuery(function ($) {
             playing = false,
             tracks = [
                 {% for card in self.cards %}
-                { "name": "{{ card.title }}", "track":{{ card.trackno }}, "file": "{{ card.track.file.url }}", "duration": {{ card.track.duration }} },
+                { "name": "{{ card.title }}", "track":{{ card.trackno }}, "file": "{{ card.track.file.url }}", "duration": {{ card.track.duration }},"trackdate": "{{card.trackdate}}" , "shownotes": "{{card.shownotespage.url }}"},
                 {% endfor %}
             ],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
-                    trackDuration = value.duration;
-                $('#plList').append('<li> \
-                    <div class="plItem"> \
-                        <span class="plNum">' + trackNumber + '</span> \
-                        <span class="plTitle">' + trackName + '</span> \
-                        <span class="plLength">' + trackDuration + '</span> \
-                    </div> \
-                </li>');
+                    trackDuration = value.duration,
+                    shownotes = value.shownotes,
+                    trackdate = value.trackdate;
+                $('#plList').append('<tr><th scope="row"><a href=' + shownotes + '  class="badge badge-light">' + trackNumber + '</a></th> \
+                    <td>' + trackdate + '</td> \
+                    <td><a href=' + shownotes + '  class="badge badge-light">' + trackName + '</a></td> \
+                    <td>' + trackDuration + '</td> \
+                </tr>');
             }),
             trackCount = tracks.length,
             npAction = $('#npAction'),
@@ -74,7 +74,7 @@ jQuery(function ($) {
                     loadTrack(index);
                 }
             }),
-            li = $('#plList li').on('click', function () {
+            li = $('#plList tr').on('click', function () {
                 var id = parseInt($(this).index());
                 if (id !== index) {
                     playTrack(id);
@@ -82,7 +82,9 @@ jQuery(function ($) {
             }),
             loadTrack = function (id) {
                 $('.plSel').removeClass('plSel');
-                $('#plList li:eq(' + id + ')').addClass('plSel');
+                $('#plList tr').removeClass('table-active');
+                $('#plList tr:eq(' + id + ')').addClass('plSel');
+                $('#plList tr:eq(' + id + ')').addClass('table-active');
                 npTitle.text(tracks[id].name);
                 index = id;
                 audio.src = tracks[id].file ;
