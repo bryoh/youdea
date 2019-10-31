@@ -2,10 +2,14 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    <div> {{ self.subtitle }} </div>
+        <div class="container">
+          <div class="jumbotron">
+              <h2>{{ self.subtitle }}</h2>
+              <hr class="my-4">
+              {{ page.content }}
+          </div>
+        </div>
 
-    {% for block in page.content %}
-        {% include_block block %}
-    {% endfor %}
 
 {% endblock %}
+

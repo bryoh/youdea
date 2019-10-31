@@ -1,5 +1,33 @@
-{% comment %}{% extends "base.html" %}{% endcomment %}
+{% extends "base.html" %}
 
+{% block content %}
+
+<div class="container">
+   <div class="column add-bottom">
+      <div id="mainwrap">
+         <div id="nowPlay"><span id="npAction">Paused...</span><span id="npTitle"></span> </div>
+         <div id="audiowrap">
+            <div id="audio0"><audio id="audio1" preload controls>Your browser does not support HTML5 Audio! 😢</audio></div>
+            <div id="tracks"><a id="btnPrev" class='fas fa-fast-backward'></a><a id="btnNext" class='fas fa-fast-forward'></a></div>
+         </div>
+         <table class="table table-sm">
+            <thead>
+            <tr>
+               <th scope="col">Episode</th>
+               <th scope="col">Date</th>
+               <th scope="col">Title</th>
+               <th scope="col">Duration</th>
+            </tr>
+            </thead>
+            <tbody id='plList'>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
 <script>
 jQuery(function ($) {
     'use strict'
@@ -23,7 +51,7 @@ jQuery(function ($) {
                     trackdate = value.trackdate;
                 $('#plList').append('<tr><th scope="row"><a href=' + shownotes + '  class="badge badge-light">' + trackNumber + '</a></th> \
                     <td>' + trackdate + '</td> \
-                    <td><a href=' + shownotes + '  class="badge badge-light">' + trackName + '</a></td> \
+                    <td>' + trackName + '</td> \
                     <td>' + trackDuration + '</td> \
                 </tr>');
             }),
@@ -106,5 +134,6 @@ jQuery(function ($) {
         var noSupport = $('#audio1').text();
         $('.container').append('<p class="no-support">' + noSupport + '</p>');
     }
-})       
+})
    </script>
+{% endblock %}

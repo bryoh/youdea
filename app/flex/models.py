@@ -10,7 +10,7 @@ from streams import blocks
 class FlexPage(Page):
     """ Flexible page class """
 
-    temlate = "flex/flex_page.html"
+    template = "flex/flex_page.html"
     content = StreamField(
         [('title_and_text', blocks.TitleAndTextBlock()), ('full_richtext', blocks.RichTextBlock()), ('card', blocks.CardBlock())], null=True, blank=True
     )
