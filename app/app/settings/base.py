@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'modelcluster',
+    'wagtailfontawesome',
+    'wagalytics',
     'taggit',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -165,3 +167,5 @@ DATABASES['default']['CONN_MAX_AGE'] = 500
 # Tags
 
 TAGGIT_CASE_INSENSITIVE = True
+GA_KEY_CONTENT = os.environ['GA_KEY_CONTENT']
+GA_VIEW_ID = os.environ['GA_VIEW_ID']
