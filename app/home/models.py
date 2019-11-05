@@ -14,7 +14,7 @@ class HomePage(Page):
     template = "home/home_page.html"
     max_count = 1
 
-    banner_text = RichTextField()
+    banner_text = RichTextField(null=True, blank=True)
     banner_author = RichTextField(features=["italic"])
     banner_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     content = StreamField([('card', blocks.CardBlock())], null=True, blank=True)
