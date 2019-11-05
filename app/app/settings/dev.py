@@ -14,14 +14,10 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-INSTALLED_APPS = INSTALLED_APPS + [
-    'debug_toolbar',
-]
+INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
 
-MIDDLEWARE = MIDDLEWARE + [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
-INTERNAL_IPS = ("127.0.0.1", "172.17.0.1")
+MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
+INTERNAL_IPS = ("127.0.0.1", "172.17.0.1", "*.herokuapp.com")
 
 try:
     from .local import *
