@@ -1,0 +1,73 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "description": "To be used for reviewing changes and verifying nothing major breaks.",
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "DBENGINE": {
+      "required": true
+    },
+    "DBHOST": {
+      "required": true
+    },
+    "DBNAME": {
+      "required": true
+    },
+    "DBPASS": {
+      "required": true
+    },
+    "DBPORT": {
+      "required": true
+    },
+    "DBUSER": {
+      "required": true
+    },
+    "DEBUG": {
+      "required": true
+    },
+    "DISABLE_COLLECTSTATIC": {
+      "required": true
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "EMAIL_HOST_PASSWORD": {
+      "required": true
+    },
+    "GA_KEY_CONTENT": {
+      "required": true
+    },
+    "GA_VIEW_ID": {
+      "required": true
+    },
+    "PORT": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "youdea-staging",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
