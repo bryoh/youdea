@@ -24,8 +24,7 @@ python manage.py migrate
 
 
 echo "============================================================== Start the server"
-if [ "$DEBUG" = 'true' ];
-then
+if [ "$DEBUG" = 'true' ]; then
     echo "============================================================== create superuser "
     echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('bry', 'admin@myproject.com', 'pass')" | python manage.py shell
 fi
