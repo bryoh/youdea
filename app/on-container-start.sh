@@ -19,11 +19,16 @@ python manage.py makemigrations
 echo "============================================================== Migrate created migrations to database"
 python manage.py migrate
 
-echo "============================================================== Collect Static "
+#echo "============================================================== Collect Static "
 #python manage.py collectstatic --no-input --clear
 
 
 echo "============================================================== Start the server"
+if [ "$DEBUG" = 'true' ];
+then
+    echo "============================================================== create superuser "
+    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('bry', 'admin@myproject.com', 'password')" | python manage.py shell
+fi
 gunicorn --reload app.wsgi
 #python manage.py runserver
 
