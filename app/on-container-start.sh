@@ -27,7 +27,7 @@ echo "============================================================== Start the s
 if [ "$DEBUG" = 'true' ];
 then
     echo "============================================================== create superuser "
-    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('bry', 'admin@myproject.com', 'password')" | python manage.py shell
+    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('bry', 'admin@myproject.com', 'pass')" | python manage.py shell
 fi
 gunicorn --reload app.wsgi
 #python manage.py runserver
