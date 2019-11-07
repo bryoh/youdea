@@ -50,7 +50,7 @@ if [ "$DEBUG" == True ]; then
     echo ""
     echo ""
     echo ""
-    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('bry', 'admin@myproject.com', 'pass')" | python manage.py shell
+    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('waka', 'admin@myproject.com', '1pass')" | python manage.py shell
 fi
 
 echo "============================================================== Start the server"
