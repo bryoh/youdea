@@ -1,6 +1,7 @@
 from .base import *
 import os
 
+
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'www.youdea.co.uk', 'youdea.herokuapp.com']
 
 DEBUG = False
