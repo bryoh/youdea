@@ -1,7 +1,8 @@
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
 # Add your site's domain name(s) here.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'www.youdea.co.uk', 'youdea.herokuapp.com']
