@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.admin',
-    'wagtailfontawesome',
     'wagtailmedia',
     # Django
     'django.contrib.admin',
