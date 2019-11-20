@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
 INSTALLED_APPS = [
     # This project
     'website',
+    'streams',
     # CodeRed CMS
     'coderedcms',
     'bootstrap4',
