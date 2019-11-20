@@ -10,18 +10,14 @@ urlpatterns = [
     # Admin
     path('django-admin/', admin.site.urls),
     path('admin/', include(coderedadmin_urls)),
-
     # Documents
     path('docs/', include(wagtaildocs_urls)),
-
     # Search
     path('search/', include(coderedsearch_urls)),
-
     # For anything not caught by a more specific rule above, hand over to
     # the page serving mechanism. This should be the last pattern in
     # the list:
     re_path(r'', include(codered_urls)),
-
     # Alternatively, if you want CMS pages to be served from a subpath
     # of your site, rather than the site root:
     #    re_path(r'^pages/', include(codered_urls)),
@@ -31,6 +27,9 @@ urlpatterns = [
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    import debug_toolbar
+
+    urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()

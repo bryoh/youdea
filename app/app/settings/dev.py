@@ -13,6 +13,7 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_LOCATION = 'youdeastatic'
 AWS_S3_FILE_OVERWRITE = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_DEFAULT_ACL = None
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 if AWS_ACCESS_KEY_ID:
     STATIC_URL = 'https://%s/%s/youdeastatic/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
