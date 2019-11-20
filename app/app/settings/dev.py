@@ -17,6 +17,8 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 if AWS_ACCESS_KEY_ID:
     STATIC_URL = 'https://%s/%s/youdeastatic/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
     MEDIA_URL = 'https://%s/%s/youdeamedia/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    STATIC_ROOT = 'static'  # os.path.join(BASE_DIR, 'static')
+    MEDIA_ROOT = 'media'  # os.path.join(BASE_DIR, 'media')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
