@@ -7,7 +7,7 @@ from wagtail.core.fields import StreamField
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from coderedcms.forms import CoderedFormField
 from coderedcms.models import CoderedArticlePage, CoderedArticleIndexPage, CoderedEmail, CoderedFormPage, CoderedWebPage, CoderedPage
-from coderedcms.blocks import LAYOUT_STREAMBLOCKS
+from coderedcms.blocks import LAYOUT_STREAMBLOCKS, CONTENT_STREAMBLOCKS
 from streams import blocks
 
 
@@ -26,6 +26,8 @@ class ArticlePage(CoderedArticlePage):
     template = 'coderedcms/pages/article_page.html'
     amp_template = 'coderedcms/pages/article_page.amp.html'
     search_template = 'coderedcms/pages/article_page.search.html'
+    CONTENT_STREAMBLOCKS += [('episode', blocks.EpisodeBlock())]
+    body = StreamField(CONTENT_STREAMBLOCKS, null=True, blank=True)
 
 
 class ArticleIndexPage(CoderedArticleIndexPage):
@@ -41,6 +43,8 @@ class ArticleIndexPage(CoderedArticleIndexPage):
 
     # Only allow ArticlePages beneath this page.
     subpage_types = ['website.ArticlePage']
+    LAYOUT_STREAMBLOCKS += [('episode', blocks.EpisodeBlock())]
+    body = StreamField(LAYOUT_STREAMBLOCKS, null=True, blank=True)
 
     template = 'coderedcms/pages/article_index_page.html'
 
