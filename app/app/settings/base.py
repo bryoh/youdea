@@ -26,13 +26,19 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'search',
-    'flex',
+    # This project
+    'website',
     'streams',
-    'site_settings',
+    # CodeRed CMS
+    'coderedcms',
+    'bootstrap4',
+    'modelcluster',
+    'taggit',
+    'wagtailfontawesome',
+    'wagtailcache',
+    'wagtailimportexport',
+    # Wagtail
     'wagtail.contrib.forms',
-    'wagtail.contrib.settings',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
     'wagtail.sites',
@@ -41,30 +47,41 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.search',
-    'wagtail.admin',
     'wagtail.core',
-    'modelcluster',
-    'wagtailfontawesome',
-    'taggit',
+    'wagtail.contrib.settings',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.table_block',
+    'wagtail.admin',
+    'wagtailmedia',
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wagtailmedia',
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
+    # Save pages to cache. Must be FIRST.
+    'wagtailcache.cache.UpdateCacheMiddleware',
+    # Common functionality
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # Security
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # Error reporting. Uncomment this to recieve emails when a 404 is triggered.
+    #'django.middleware.common.BrokenLinkEmailsMiddleware',
+    # CMS functionality
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    # Fetch from cache. Must be LAST.
+    'wagtailcache.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -72,7 +89,6 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-uk'
 
 TIME_ZONE = 'UTC'
 
@@ -135,13 +151,6 @@ USE_TZ = True
 
 STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
 
-STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
-
-# ManifestStaticFilesStorage is recommended in production, to prevent outdated
-# Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
-# See https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
@@ -149,23 +158,39 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-# Wagtail settings
-
-WAGTAIL_SITE_NAME = 'OuterCulture'
 # Login
 
 LOGIN_URL = 'wagtailadmin_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
+
+
+# Wagtail settings
+
+WAGTAIL_SITE_NAME = "Live Life"
+
 WAGTAIL_ENABLE_UPDATE_CHECK = False
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://www.youdea.co.uk'
+
+
+# Bootstrap
+
+BOOTSTRAP4 = {
+    # set to blank since coderedcms already loads jquery and bootstrap
+    'jquery_url': '',
+    'base_url': '',
+    # remove green highlight on inputs
+    'success_css_class': '',
+}
 import dj_database_url
 
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
+
+
 # Tags
 
 TAGGIT_CASE_INSENSITIVE = True

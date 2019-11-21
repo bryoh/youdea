@@ -5,44 +5,21 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
-class TitleAndTextBlock(blocks.StructBlock):
-    """Title and text and nothing else."""
+class EpisodeBlock(blocks.StructBlock):
+    """Episode Block with title media"""
 
-    title = blocks.CharBlock(required=True, help_text="Add your title")
-    text = blocks.TextBlock(required=True, help_text="Add additional text")
-
-    class Meta:  # noqa
-        template = "streams/title_and_text_block.html"
-        icon = "edit"
-        label = "Title & Text"
-
-
-class RichTextBlock(blocks.RichTextBlock):
-    """ Richtext with all the features """
-
-    class Meta:  # noqa
-        template = "streams/richtext_block.html"
-        icon = "edit"
-        label = "Full Richtext"
-
-
-class CardBlock(blocks.StructBlock):
-    """Card with title text and media"""
-
-    cards = blocks.ListBlock(
+    episodes = blocks.ListBlock(
         blocks.StructBlock(
             [
-                ("trackno", blocks.FloatBlock(required=True, help_text="Track Number")),
-                ('title', blocks.CharBlock(required=True, max_length=40, help_text='Episode Title')),
-                ("track", AbstractMediaChooserBlock(required=True, help_text="Upload/Choose audio file")),
-                ("trackdate", blocks.DateBlock(required=True, help_text="Upload date")),
-                ("shownotespage", blocks.PageChooserBlock(required=False, help_text='Choose Shownotespage')),
+                ("showno", blocks.FloatBlock(required=True, help_text="Track Number")),
+                ("showmedia", AbstractMediaChooserBlock(required=True, help_text="Upload/Choose audio file")),
+                ("showdate", blocks.DateBlock(required=False, help_text="Upload date")),
+                ("shownotes", blocks.PageChooserBlock(required=False, help_text='Choose Shownotespage')),
             ]
         )
     )
 
     class Meta:  # noqa
-        template = "streams/card_block.html"
-        js = "cardblock.js"
+        template = "streams/episodes_block.html"
         icon = "placeholder"
-        label = "Podcasts"
+        label = "Pocast Episode"
