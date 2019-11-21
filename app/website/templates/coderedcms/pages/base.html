@@ -77,6 +77,7 @@
 
         {% block custom_assets %}
             <link rel="stylesheet" type="text/css" href="{% static 'website/css/custom.css' %}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.css" integrity="sha256-YVY0cgMlN3Yk6z5+sLnD90gFlKARWzjDwWSnReb0ATI=" crossorigin="anonymous">
         {% endblock %}
 
         {% block favicon %}
@@ -175,7 +176,9 @@
 
         {% block custom_scripts %}
         {# Add your custom JavaScript here, or delete the line below if you don't need any #}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.min.js" integrity="sha256-voP3sbDhk+YDZKsGO8dpMGk9qzne1cf3f1CRgjwRnrk=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{% static 'website/js/custom.js' %}"></script>
+        <script type="text/javascript" src="{% static 'website/js/audio.js' %}"></script>
         {% endblock %}
 
         {# Structured data JSON-LD #}
