@@ -1,6 +1,10 @@
+amqp==1.4.9
+anyjson==0.3.3
 beautifulsoup4==4.6.0
+billiard==3.3.0.23
 boto3==1.9.208
 botocore==1.12.208
+celery==3.1.26.post2
 certifi==2019.6.16
 chardet==3.0.4
 Click==7.0
@@ -9,6 +13,7 @@ decorator==4.4.1
 dj-database-url==0.5.0
 Django==2.2.4
 django-bootstrap4==1.0.1
+django-celery==3.3.1
 django-debug-toolbar==2.0
 django-eventtools==0.9.11
 django-modelcluster==4.4
@@ -29,6 +34,7 @@ httplib2==0.14.0
 icalendar==4.0.3
 idna==2.8
 jmespath==0.9.4
+kombu==3.0.37
 libsass==0.19.4
 lml==0.0.9
 oauth2client==4.1.3
