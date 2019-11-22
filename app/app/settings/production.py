@@ -34,10 +34,11 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = 'https://%s/%s/youdeastatic/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 MEDIA_URL = 'https://%s/%s/youdeamedia/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-# GA_KEY_CONTENT = os.environ['GA_KEY_CONTENT']
-# GA_VIEW_ID = os.environ['GA_VIEW_ID']
+GA_KEY_CONTENT = os.environ['GA_KEY_CONTENT']
+GA_VIEW_ID = os.environ['GA_VIEW_ID']
 
-# INSTALLED_APPS = INSTALLED_APPS + ['wagalytics']
+if GA_VIEW_ID is not None:
+    INSTALLED_APPS = INSTALLED_APPS + ['wagalytics']
 # Email address used to send error messages to ADMINS.
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
