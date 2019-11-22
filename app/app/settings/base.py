@@ -190,6 +190,16 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 
+REDIS_URL = os.environ.get('REDIS_URL')
+if REDIS_URL is not None:
+    CACHES = {'default': {'BACKEND': 'redis_cache.RedisCache', 'LOCATION': REDIS_URL}}  # in seconds
+    WAGTAIL_CACHE = True
+    import djcelery
+
+    djcelery.setup_loader()
+
+    CELERY_SEND_TASK_ERROR_EMAILS = True
+    BROKER_URL = REDIS_URL
 
 # Tags
 
