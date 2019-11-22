@@ -12,6 +12,7 @@ django-bootstrap4==1.0.1
 django-debug-toolbar==2.0
 django-eventtools==0.9.11
 django-modelcluster==4.4
+django-redis-cache==2.1.0
 django-sass==0.2.0
 django-sendmail-backend==0.1.2
 django-storages==1.7.1
@@ -42,6 +43,7 @@ pyexcel-ods==0.5.3
 python-dateutil==2.8.0
 pytz==2019.2
 ratelim==0.1.6
+redis==3.3.11
 requests==2.22.0
 rsa==4.0
 s3transfer==0.2.1
