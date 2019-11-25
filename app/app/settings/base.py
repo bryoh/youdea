@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'wagtailcache',
     'wagtailimportexport',
     # Wagtail
+    'livepreview',  # Needs to be above wagtail admin
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
