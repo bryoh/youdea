@@ -29,7 +29,7 @@ if (supportsAudio) {
             player.on('loadedmetadata', function() {
                 $('a[data-plyr="download"]').attr('href', fileurl);
             });
-            npAction.text( $(this).find('td').text)
+            npAction.text( $(this).find('td').text())
             audio.play();
         })
 
