@@ -11,7 +11,7 @@ Click==7.0
 coderedcms==0.16.3
 decorator==4.4.1
 dj-database-url==0.5.0
-Django==2.2.4
+Django==2.2.8
 django-bootstrap4==1.0.1
 django-celery==3.3.1
 django-debug-toolbar==2.0
