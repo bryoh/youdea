@@ -6,5 +6,5 @@ db.sqlite3
 .DS_Store
 .coverage
 .idea/
-/static
+/app/static/
 /.env

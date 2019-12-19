@@ -6,12 +6,11 @@ LABEL maintainer="brianbryo@gmail.com"
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV dev
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip
-RUN pip install -r /code/requirements.txt
+RUN pip install -r /app/requirements.txt
 
-COPY ./app /code/
-WORKDIR /code/
+COPY ./app /app/
 
 EXPOSE 8000
-CMD exec gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3
+CMD exec gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3 --reload

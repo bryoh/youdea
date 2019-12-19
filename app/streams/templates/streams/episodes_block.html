@@ -20,12 +20,12 @@
           </thead>
           <tbody id='playlist'>
                     {% for episode in self.episodes %}          
-            <tr class="clickable-row" data-href="{{episode.showmedia.file.url}}">
-                   <th scope="row">{{episode.showno}}</th>
-                   <td>{{episode.showdate}}</td>
-                   <td>{{episode.showmedia.title}}</td>
-                   <td>{{episode.showmedia.duration }}</td>
-            </tr>
+                    <tr class="clickable-row" data-href="{{episode.showmedia.file.url}}">
+                           <th scope="row">{{episode.showno}}</th>
+                           <td>{{episode.showdate}}</td>
+                           <td>{{episode.showmedia.title}}</td>
+                           <td>{{episode.showmedia.duration }}</td>
+                    </tr>
                     {% endfor %}
           </tbody>
         </table>

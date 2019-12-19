@@ -2,21 +2,31 @@ version: '3.7'
 services:
   app:
     build: . 
-    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    command: 'sh app/on-container-start.sh'
     ports:
       - 8000:8000
     environment:
-      #- DEBUG=1   
+      - DEBUG=true
+      - STATIC_URL=/tmp/
       - DBNAME=postgres
       - DBUSER=postgres
+      - DBPASS=changeme
       - DBHOST=db
       - DBPORT=5432  
       - DBENGINE=django.db.backends.postgresql  
     depends_on:
       - db
     volumes:
-      - ./app:/code
+      - ./app:/app/
   db:
     image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
     ports:
       - "6432:5432"
+volumes:
+    postgres:

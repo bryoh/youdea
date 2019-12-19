@@ -34,13 +34,13 @@ echo ""
 echo ""
 python manage.py migrate
 
-#echo "============================================================== Collect Static "
-#echo ""
-#echo ""
-#echo ""
-#echo ""
-#echo ""
-#python manage.py collectstatic --no-input --clear
+echo "============================================================== Collect Static "
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+python manage.py collectstatic --no-input --clear
 
 
 if [ "$DEBUG" = 'true' ]; then
@@ -59,7 +59,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-gunicorn --reload app.wsgi
+gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3 --reload
 #python manage.py runserver
 
 exec "$@"
