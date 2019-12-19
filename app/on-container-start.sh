@@ -59,7 +59,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3 --reload
+gunicorn app.wsgi:application --workers 3 --reload
 #python manage.py runserver
 
 exec "$@"
