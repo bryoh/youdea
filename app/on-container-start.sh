@@ -40,7 +40,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-python manage.py collectstatic --no-input --clear
+#python manage.py collectstatic --no-input --clear
 
 
 if [ "$DEBUG" = 'true' ]; then
