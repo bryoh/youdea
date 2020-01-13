@@ -5,7 +5,17 @@ DEBUG = False
 # DEBUG = True
 
 # Add your site's domain name(s) here.
-ALLOWED_HOSTS = ['*', '0.0.0.0', '127.0.0.1', 'localhost', 'www.youdea.co.uk', 'youdea-staging.herokuapp.com', 'youdea.herokuapp.com']
+ALLOWED_HOSTS = [
+    '*',
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+    'www.youdea.co.uk',
+    'youdea-staging.herokuapp.com',
+    'youdea.herokuapp.com',
+    'outerculture.co.uk',
+    'www.outerculture.co.uk',
+]
 
 # To send email from the server, we recommend django_sendmail_backend
 # Or specify your own email backend such as an SMTP server.
