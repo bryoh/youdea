@@ -2,7 +2,7 @@ version: '3.7'
 services:
   app:
     build: . 
-    command: 'sh app/on-container-start.sh'
+    command: 'gunicorn app.wsgi:application --timeout 300 --workers 3 --reload --bind 0.0.0.0:8000'
     ports:
       - 8000:8000
     environment:
