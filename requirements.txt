@@ -8,7 +8,7 @@ celery==3.1.26.post2
 certifi==2019.6.16
 chardet==3.0.4
 Click==7.0
-coderedcms==0.16.3
+coderedcms==0.17.0
 decorator==4.4.1
 dj-database-url==0.5.0
 Django==2.2.8
@@ -16,12 +16,12 @@ django-bootstrap4==1.0.1
 django-celery==3.3.1
 django-debug-toolbar==2.0
 django-eventtools==0.9.11
-django-modelcluster==4.4
+django-modelcluster==5.0.1
 django-redis-cache==2.1.0
 django-sass==0.2.0
 django-sendmail-backend==0.1.2
 django-storages==1.7.1
-django-taggit==0.24.0
+django-taggit==1.2.0
 django-treebeard==4.3
 djangorestframework==3.10.2
 docutils==0.14
@@ -60,7 +60,7 @@ Unidecode==1.1.1
 urllib3==1.25.3
 user-agents==2.0
 wagalytics==1.0
-wagtail==2.6.1
+wagtail==2.7.1
 wagtail-blocks==0.6.8
 wagtail-cache==0.5.2
 wagtail-import-export==0.2
@@ -68,4 +68,4 @@ wagtail-livepreview==0.1
 wagtailfontawesome==1.1.4
 wagtailmedia==0.3.1
 webencodings==0.5.1
-Willow==1.1
+Willow==1.3
