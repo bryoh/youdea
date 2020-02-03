@@ -68,7 +68,6 @@ user-agents==2.0
 vine==1.3.0
 wagalytics==1.2
 wagtail==2.7.1
-wagtail-blocks==0.6.8
 wagtail-cache==0.5.2
 wagtail-import-export==0.2
 wagtail-livepreview==0.1
