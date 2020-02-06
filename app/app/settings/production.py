@@ -49,6 +49,13 @@ GA_VIEW_ID = os.environ['GA_VIEW_ID']
 
 if GA_VIEW_ID is not None:
     INSTALLED_APPS = INSTALLED_APPS + ['wagalytics']
+if os.environ.get('DEBUG') == 'true':
+    INSTALLED_APPS += ['django_sass', 'debug_toolbar']
+
+    MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    INTERNAL_IPS = ("127.0.0.1", "172.17.0.1", "staging.herokuapp.com")
+
+
 # Email address used to send error messages to ADMINS.
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 

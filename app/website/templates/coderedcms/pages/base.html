@@ -9,15 +9,17 @@
   <head>
         {% block tracking %}
         {% if settings.coderedcms.AnalyticsSettings.ga_tracking_id %}
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id={{settings.coderedcms.AnalyticsSettings.ga_tracking_id}}"></script>
-            <script>
-              cr_track_clicks = {{settings.coderedcms.AnalyticsSettings.ga_track_button_clicks|yesno:"true,false"}};
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '{{settings.coderedcms.AnalyticsSettings.ga_tracking_id}}');
-            </script>
+            {% if not livepreview %}
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id={{settings.coderedcms.AnalyticsSettings.ga_tracking_id}}"></script>
+                <script>
+                  cr_track_clicks = {{settings.coderedcms.AnalyticsSettings.ga_track_button_clicks|yesno:"true,false"}};
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '{{settings.coderedcms.AnalyticsSettings.ga_tracking_id}}');
+                </script>
+            {% endif %}
         {% endif %}
         {% endblock %}
 
@@ -101,7 +103,6 @@
 
     <body class="coderedcms-{{page.content_type.model}} {% if page.get_parent %}parent-page-{{page.get_parent.id}}{% endif %} {% block body_class %}{% endblock %}" id="page-{{page.id}}">
 
-                {% livepreview_js %}
 
         {% include "coderedcms/includes/codered_banner.html" %}
 
@@ -194,5 +195,6 @@
             {% endblock %}
             {% block struct_seo_extra %}{% endblock %}
         {% endif %}
+                {% livepreview_js %}
     </body>
 </html>
